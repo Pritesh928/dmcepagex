@@ -34,7 +34,7 @@ public class PdfController {
         PDDocument inputPdf = PDDocument.load(pdfFile.getInputStream());
         PDDocument outputPdf = new PDDocument();
 
-        // ✅ Load images from resources (make sure placed in src/main/resources/)
+        //Load images from response
         ClassPathResource headerRes = new ClassPathResource("header.png");
         ClassPathResource wmRes = new ClassPathResource("watermark.png");
 
@@ -54,7 +54,7 @@ public class PdfController {
 
             PDPage page = inputPdf.getPage(i);
 
-            // ✅ KEEP ORIGINAL PAGE SIZE (IMPORTANT)
+            //size same as previous input(fix)
             PDRectangle pageSize = page.getMediaBox();
             PDPage newPage = new PDPage(pageSize);
             outputPdf.addPage(newPage);
@@ -64,12 +64,12 @@ public class PdfController {
 
             PDPageContentStream content = new PDPageContentStream(outputPdf, newPage);
 
-            // ---------------- WATERMARK (BEHIND CONTENT) ----------------
+            //Watermark content
             float wmWidth = pageWidth * 0.6f;
             float wmHeight = (watermarkImg.getHeight() * wmWidth) / watermarkImg.getWidth();
 
             PDExtendedGraphicsState gs = new PDExtendedGraphicsState();
-            gs.setNonStrokingAlphaConstant(0.12f); // adjust opacity here
+            gs.setNonStrokingAlphaConstant(0.12f); //watermark opacity adjustment 
 
             content.saveGraphicsState();
             content.setGraphicsStateParameters(gs);
@@ -84,7 +84,7 @@ public class PdfController {
 
             content.restoreGraphicsState();
 
-            // ---------------- HEADER ----------------
+            // Header functions
             content.drawImage(
                     headerImg,
                     0,
@@ -93,12 +93,12 @@ public class PdfController {
                     headerHeight
             );
 
-            // ---------------- ORIGINAL CONTENT ----------------
+            //body of pdf as previous imput
             PDFormXObject form = layerUtility.importPageAsForm(inputPdf, i);
 
             content.saveGraphicsState();
 
-            // ✅ ONLY shift content down (NO scaling)
+            // content shift down function
             content.transform(Matrix.getTranslateInstance(0, -headerHeight));
 
             content.drawForm(form);
