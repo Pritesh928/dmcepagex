@@ -1,6 +1,7 @@
 # DMCE-PAGEX
 
-https://dmcepagex.onrender.com/
+https://dmcepagex.priteshsingh928.qzz.io/
+
 
 # Get Instant Solution
 Its is very simple to use : -
@@ -13,12 +14,6 @@ Its is very simple to use : -
 
 4.If you want a good experience a better ui 
 
-
-You can check out this two website 
-
-https://dmcepagexonrender.netlify.app/
-
-https://dmcepagex.vercel.app/
 
 # How actually pages look after processing pdf : - 
 
