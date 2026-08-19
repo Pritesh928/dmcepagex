@@ -15,6 +15,6 @@ Its is very simple to use : -
 4.If you want a good experience a better ui 
 
 
-# How actually pages look after processing pdf : - 
+# How actually pages look after processing pdf on the server : - 
 
 <img width="367" height="470" alt="image" src="https://github.com/user-attachments/assets/d5af4b79-9a35-427e-9076-dc3973ba8322" />
